@@ -1,7 +1,7 @@
 package repository
 
 type Account struct {
-	Id        string
+	Id        int64
 	Username  string
-	Type      string
+	Type      int64
 }

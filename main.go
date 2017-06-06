@@ -3,7 +3,7 @@ package main
 import "os"
 import "fmt"
 import "gopkg.in/macaron.v1"
-import "account/repository"
+import "golang-account-simple/repository"
 
 func main() {
 	fmt.Println("Hello, world!")
@@ -35,10 +35,19 @@ func main() {
 			return
 		}
 
-		fmt.Println("found accounts...")
-		fmt.Println(accounts)
-		ctx.Data["Name"] = "user"
-		ctx.HTML(200, "hello") // 200 is the response code.
+		if len(accounts) > 0 {
+			fmt.Println("Congratulations, we found your account.")
+			ctx.Data["Id"] = accounts[0].Id
+			ctx.Data["Username"] = accounts[0].Username
+			ctx.Data["Type"] = "Unknown"
+			if accounts[0].Type == 1 {
+				ctx.Data["Type"] = "Primary"
+			}
+			ctx.HTML(200, "hello") // 200 is the response code.
+		} else {
+			fmt.Println("No account found.")
+			ctx.HTML(200, "hello") // 200 is the response code.
+		}
 	})
 	m.Run()
 }
