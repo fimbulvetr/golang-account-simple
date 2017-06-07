@@ -3,7 +3,24 @@ A simple Go web app to access mysql.
 
 It's named account because it seemed like a simple enough example to use with an orm.
 
-Make sure you have glide, a golang package manager installed.
+Make sure you understand go enough to have set your GOPATH. Recommended reading: https://github.com/alco/gostart#faq0
+
+TLDR: 
+* Make a directory named go. You must commit to forever more have anything related to go in this directory. Sorry, that's how go works. Set GOPATH= the fully qualified path to the go directory.
+```
+mkdir ~go && echo "export GOPATH=$HOME/go" >> ~/.bashrc && source ~/.bash_rc
+```
+     
+* Make the following directories in your go folder: bin, build, pkg, src
+```
+mkdir $GOPATH/bin && mkdir $GOPATH/build && mkdir $GOPATH/pkg && mkdir $GOPATH/src
+```
+* Change into your src directory, and clone this package:
+```
+cd $GOPATH/src && git clone https://github.com/fimbulvetr/golang-account-simple.git
+```
+
+Make sure you have [glide](http://glide.sh/), a golang package manager installed.
 
 Then, simply:
 
